@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>poker game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="vh-100" id="initialScreen">
+        <div class="container h-100">
+            <div class="h-100">
+                <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                    <img src="img/poker.png" alt="">
+                    <h3 class="display-4"> פוקר עם חברים</h3>
+                    <button type="submit" class="btn btn-success" id="newGamebutton">צור חדר</button>
+                    <div>או</div>
+                    <div class="form-group">
+                        <input type="text" class="text-center" placeholder="הכנס קוד" id="gameCodeInput">
+                    </div>
+                    <button type="submit" class="btn btn-success" id="joinGamebutton">הצטרף לחדר קיים</button>
+                    </button>
+
+                </div>
+            </div>
+
+
+
+            <!-- <div id="gameScreen" class="h-100">
+                <div class="btn btn-success" id="btnStartGame">לחץ כאן</div>
+                <img src="img/snake.png" alt="" style="width: 30px; height: 43px;" class="mt-3">
+                <h5 class="col-12 text-center"><span id="gameCodeDisplay"></span> : מספר חדר </h5>
+
+                <div class="d-flex flex-column align-items-center mt-4 h-100">
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div> -->
+
+        </div>
+
+    </section>
+    <div class="log_in" id="room" style="display: none;">
+        <div>
+            room: <span id="num_room"></span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center flex-column mt-5">
+
+            <div class="row">
+                <div class="d-flex justify-content-between">
+                    <div class="col player_table mr-5" id=""></div>
+                    <div class="col dealerBox " id="diller"></div>
+                    <div class="col player_table ml-5" id=""></div>
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="d-flex justify-content-center align-items-center">
+
+                    <div class="d-flex justify-content-center flex-column">
+                        <div class="player_table mr-2 mb-2" id=""></div>
+                        <div class="player_table mr-2 mt-2" id="">
+                        </div>
+                    </div>
+
+                    <div class="board">
+                        <div class="row d-flex justify-content-center h-100">
+                            <div class="left_table col-2 d-flex justify-content-center flex-column  h-100 ">
+                                <div class="left_up bg-info h-100"></div>
+                                <div class="left_bottom bg-danger h-100"></div>
+                            </div>
+                            <div class="middle_table col-8 d-flex justify-content-center  flex-column w-80 h-100">
+
+                                <div class="up_middle bg-info h-100"></div>
+                                <div
+                                    class="center_middle bg-danger d-flex align-items-center justify-content-center h-100">
+
+                                    <div class="card_game ml-2" id="flop_1"></div>
+                                    <div class="card_game ml-2" id="flop_2"></div>
+                                    <div class="card_game ml-2" id="flop_3"></div>
+
+                                    <div class="card_game ml-3" id="turn"></div>
+                                    <div class="card_game ml-3" id="river"></div>
+
+                                </div>
+                                <div class="bottom_middle bg-info h-100"></div>
+
+                            </div>
+
+                            <div class="right_table col-2  d-flex justify-content-center flex-column  h-100">
+                                <div class="right_up bg-info h-100"></div>
+                                <div class="right_bottom bg-danger h-100"></div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex justify-content-center flex-column">
+                        <div class=" player_table ml-2 mb-2" id=""></div>
+                        <div class=" player_table ml-2 mt-2" id=""></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="d-flex justify-content-between">
+                    <div class="col player_table mr-5" id=""></div>
+                    <div class="col player_table user" id=""></div>
+                    <div class="col player_table ml-5" id=""></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <div class="boxPlayer">
+                <div class=" d-flex justify-content-center align-items-center flex-column">
+
+                    <div class="row p-0 m-0">
+                        <div class="toCallBox d-flex justify-content-center align-items-center flex-column">
+                            <label for="cash" class=" mt-5">cash</label>
+                            <h1 id="cash" class="d-flex d-flex align-items-center ">
+                                1000
+                            </h1>
+                        </div>
+
+                        <div class="cashBox d-flex justify-content-center align-items-center flex-column">
+                            <label for="toCall" class=" mt-5">to call</label>
+                            <h1 id="toCall" class="d-flex d-flex align-items-center ml-3">
+                                1000
+                            </h1>
+                        </div>
+
+                    </div>
+
+
+                    <div class="d-flex align-items-end">
+                        <button type="button" class="btn btn-success mb-3">Check</button>
+                        <button type="button" class="btn btn-success ml-2 mb-3">Call</button>
+                        <button type="button" class="btn btn-danger ml-2 mb-3">Fold</button>
+                        <button type="button" class="btn btn-danger ml-2 mb-3">Riase</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+</body>
+<script>
+    let new_game_button = document.getElementById("newGamebutton");
+    let join_game_button = document.getElementById("joinGamebutton");
+    let game_code_input = document.getElementById("gameCodeInput");
+
+    let room = document.getElementById("room");
+    let initial_screen = document.getElementById("initialScreen");
+    let num_room = document.getElementById("num_room");
+
+
+
+
+    new_game_button.addEventListener('click', newGame);
+    join_game_button.addEventListener('click', joinGame);
+
+    var socket = io();
+    socket.on('gameCode', handleGameCode);
+    socket.on('unknownGame', handleUnknownGame);
+    socket.on('tooManyPlayers', handletooManyPlayers);
+    // socket.on('initPlayer', handleinitPlayer);
+
+
+    function newGame() {
+        socket.emit('newGame');
+        //call the game
+        init();
+
+        // btnStartGame.addEventListener('click', e => {
+        //     console.log('player 1');
+        //     // socket.emit('joinGame', code);
+        //     socket.emit('player_1_ready', true);
+        // })
+
+
+
+    }
+
+    function joinGame() {
+        const code = game_code_input.value;
+        // const name = name_input.value;
+        // const sum = sum_input.value;
+
+        console.log(code);
+        // socket.emit('playerDetails', name, sum);
+
+        socket.emit('joinGame', code.trim());
+        init();
+
+    }
+    function init() {
+        initial_screen.style.display = "none";
+        room.style.display = "block";
+        // canvas = document.getElementById("room");
+
+        // document.addEventListener('check', keydown);
+        // document.addEventListener('fold', keydown);
+        // document.addEventListener('raise', keydown);
+        // document.addEventListener('call', keydown);
+
+        // gameActive = true;
+    }
+
+    function handleGameCode(gameCode) {
+        console.log(gameCode);
+        num_room.innerText = gameCode;
+    }
+
+    function handleUnknownGame() {
+        reset();
+        alert('THIS GAME IS RUNNING');
+    }
+    function handletooManyPlayers() {
+        reset();
+        alert('unknow game Code');
+    }
+
+    function reset() {
+        // player_Number = null;
+        game_code_input = "";
+        game_code_display = "";
+        initial_screen.style.display = "block";
+        room.style.display = "none";
+    }
+</script>
+
+</html>
